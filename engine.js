@@ -30,14 +30,41 @@ class Game {
         this.currentScene = sceneId;
 
         this.stopAudio();
-
-        this.showImage(scene.image);
+        if (scene.image) {
+            this.showImage(this.selectImage(scene.image));
+        }
+        
         this.showText(scene.text);
         this.showChoices(scene.choices);
 
         if (scene.audio) {
             this.playAudio(scene.audio);
         }
+    }
+
+    selectImage(imageDefinition) {
+      if (typeof imageDefinition === "string") {
+        return imageDefinition;
+      }
+
+      for (const candidate of imageDefinition) {
+        if (this.matches(candidate.when)) {
+          return candidate.when.path;
+        }
+      }
+      return null;
+    }
+
+    matches(option) {
+      switch (option.operation) {
+        case "is": {
+          if (this.state[option.key] === option.value) {
+            return true;
+          }
+          break;
+        }
+      }
+      return false;
     }
 
     showImage(filename) {
@@ -107,6 +134,6 @@ class Game {
 
 }
 
-const game = new Game(story, state);
+const game = new Game(story, gameState);
 
 game.start();

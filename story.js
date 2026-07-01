@@ -21,7 +21,7 @@ const story = {
         bgcolor: "#FF0000",
         effect: {
           type: "set",
-          key: "barvaVlaku",
+          key: "barvaLokomotivy",
           value: "cervena"
         },
         next: "pocetVagonu"
@@ -31,7 +31,7 @@ const story = {
         bgcolor: "#4040FF",
         effect: {
           type: "set",
-          key: "barvaVlaku",
+          key: "barvaLokomotivy",
           value: "modra"
         },
         next: "pocetVagonu"
@@ -41,7 +41,7 @@ const story = {
         bgcolor: "#FEDF00",
         effect: {
           type: "set",
-          key: "barvaVlaku",
+          key: "barvaLokomotivy",
           value: "zluta"
         },
         next: "pocetVagonu"
@@ -52,14 +52,14 @@ const story = {
     image: [
       {
         when: {
-          key: "barvaVlaku",
+          key: "barvaLokomotivy",
           operation: "is",
           value: "zluta",
           path: "images/regiojet-na-nadrazi.jpg"
         }
       }
     ],
-    text: "The trees are very tall.",
+    text: "RegioJet vyjíždí z tunelu. Už je vidět lokomotiva!",
     audio: "audio/wheels.mp3",
     choices: [
       {
